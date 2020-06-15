@@ -8,13 +8,14 @@ html {
 }
 
 body {
-    background-color: #f0f7f1;
+    background-color: #f0f0f5;
     -webkit-font-smoothing: antialiased;
 }
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 h1,
