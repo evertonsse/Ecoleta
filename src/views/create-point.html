@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet"/>
 
     <link rel="stylesheet" href="./stylesCss/main.css"/>
+    <link rel="stylesheet" href="./stylesCss/modal.css"/>
     <link rel="stylesheet" href="./stylesCss/create-point.css"/>
     <link rel="stylesheet" href="./stylesCss/responsive.css"/>
 
@@ -20,7 +21,7 @@
       <!-- pedaço de codigo incluso pelo metodo "include" do nunjucks -->
       {% include "partials/page-header.html"%}
 
-      <form action="">
+      <form action="/save-point" method="POST">
         <!-- Dados da entidade -->
         <fieldset>
           <legend>
@@ -35,12 +36,7 @@
 
             <div class="field">
               <label for="image">Imagem da entidade</label>
-              <input 
-              type="url"
-              name="image"
-              placeholder="http://"
-              required="required"
-              />
+              <input type="url" name="image" placeholder="http://" required="required"/>
             </div>
 
           </div>
@@ -84,32 +80,32 @@
 
           <div class="items-grid">
 
-            <li data-id="1">
+            <li data-id="Lâmpadas">
               <img src="./assests/lampadas.svg" alt="Lâmpadas"/>
               <span>Lâmpadas</span>
             </li>
 
-            <li data-id="2">
+            <li data-id="Pilahs e Baterias">
               <img src="./assests/baterias.svg" alt="Pilahs e Baterias"/>
               <span>Pilhas e Baterias</span>
             </li>
 
-            <li data-id="3">
+            <li data-id="Papéis e Papelão">
               <img src="./assests/papeis-papelao.svg" alt="Papéis e Papelão"/>
               <span>Papéis e Papelão</span>
             </li>
 
-            <li data-id="4">
+            <li data-id="Resíduos Eltrônicos">
               <img src="./assests/eletronicos.svg" alt="Resíduos Eltrônicos"/>
               <span>Resíduos Eltrônicos</span>
             </li>
 
-            <li data-id="5">
+            <li data-id="Resíduos Orgânicos">
               <img src="./assests/organicos.svg" alt="Resíduos Orgânicos"/>
               <span>Resíduos Orgânicos</span>
             </li>
 
-            <li data-id="6">
+            <li data-id="Óleo de cozinha">
               <img src="./assests/oleo.svg" alt="Óleo de cozinha"/>
               <span>Óleo de cozinha</span>
             </li>
@@ -121,6 +117,11 @@
         <button type="submit">Cadastrar ponto de coleta</button>
       </form>
     </div>
+
+    {% if saved %}
+     {% include "partials/point-created.html"%}
+    {% endif %}
+   
 
     <script src="scripts/create-point.js"></script>
   </body>

@@ -63,24 +63,24 @@ module.exports = db;
 //    */
 //   db.run(query, values, afterInsertData);
 
-//   /*  o método all() recebe 2 parametros uma instrução sql e uma função de callback
-//   a função de callback tbm recebe 2 parametros o erro e um array com o resultado da query */
-//   //Usada para instruções sqls q retornem registros ex.: select, join, etc
-//   // db.all("SELECT name FROM places", function (err, rows) {
-//   //   if (err) {
-//   //     return console.log(err);
-//   //   }
-//   //   console.log("Aqui estão seu registros");
-//   //   console.log(rows);
-//   // });
+  /*  o método all() recebe 2 parametros uma instrução sql e uma função de callback
+  a função de callback tbm recebe 2 parametros o erro e um array com o resultado da query */
+  //Usada para instruções sqls q retornem registros ex.: select, join, etc
+//   db.all("SELECT * FROM places", function (err, rows) {
+//     if (err) {
+//       return console.log(err);
+//     }
+//     console.log("Aqui estão seu registros");
+//     console.log(rows);
+//   });
 
 //   // //No caso de delete tbm utilizamos também a run()
-//   // db.run("DELETE FROM PLACES WHERE id = ?", [1], function (err) {
-//   //   if (err) {
-//   //     return console.log(err);
+//   db.run("DELETE FROM PLACES WHERE id = ?", [], function (err) {
+//     if (err) {
+//       return console.log(err);
 
-//   //   }
-//   //   console.log ("Registro deletado com sucesso")
-//   // });
+//     }
+//     console.log ("Registro deletado com sucesso")
+//   });
 
 // });
