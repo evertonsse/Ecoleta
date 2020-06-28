@@ -1,65 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet"/>
 
-  <link rel="stylesheet" href="./stylesCss/main.css" />
-  <link rel="stylesheet" href="./stylesCss/search-results.css" />
-  <link rel="stylesheet" href="./stylesCss/responsive.css" />
+    <link rel="stylesheet" href="./stylesCss/main.css"/>
+    <link rel="stylesheet" href="./stylesCss/search-results.css"/>
+    <link rel="stylesheet" href="./stylesCss/responsive.css"/>
 
-  <title>Resultado da pesquisa</title>
-</head>
+    <title>Resultado da pesquisa</title>
+  </head>
 
-<body>
-  <div id="page-search-results">
-   
-    {% include "partials/page-header.html"%}
+  <body>
+    <div id="page-search-results">
+
+      {% include "partials/page-header.html"%}
+
+      <main>
+
+        {% if places.length > 0 %}
 
 
-    <main>
-      <h3>
-        <strong>2 pontos</strong> encontrados
-      </h3>
+         <h3>
+          <strong>{{places.length}}
+            pontos</strong>
+          encontrados
+        </h3>
 
-      <div class="cards">
-        <div class="card">
-          <img src="https://media-manager.noticiasaominuto.com.br/1920/naom_5b0c2adbbcdee.jpg" alt="Colectoria">
-          <h1>Colectoria</h1>
-          <h3>Resíduos eletronicos/Lâmpadas</h3>
+        <div class="cards">
 
-          <p>
-            Rio do Sul, Santa Catarina <br>
-            Guilherme Gemballa, Jardim América <br>
-            Nº 260
-          </p>
+          {# extrutura do for usada pelo nunjucks, o array a ser iterado deve ter o mesmo nome 
+        que o array enviado por parametro na função de render no server, neste caso places #}
+          {% for place in places %}
+
+            <div class="card">
+              <img src="{{place.image}}" alt="{{place.name}}">
+              <h1>{{place.name}}</h1>
+              <h3>{{place.items}}</h3>
+
+              <p>
+                {{place.city}},
+                {{place.state}}
+                <br>
+                {{place.address}}
+                <br>
+                {{place.address2}}
+              </p>
+            </div>
+
+          {% endfor %}
+
+          {%else%}
+
+          <h4><strong>Nenhum </strong> local encontrado. </h4>
+        
+        {% endif %}
+       
+
         </div>
 
-        <div class="card">
-          <img
-            src="https://images.unsplash.com/photo-1516992654410-9309d4587e94?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-            alt="Papersider">
-          <h1>Papersider</h1>
-          <h3>Papéis e Papelão</h3>
+      </main>
 
-          <p>
-            Rio do Sul, Santa Catarina <br>
-            Guilherme Gemballa, Jardim América <br>
-            Nº 260
-          </p>
-        </div>
-      </div>
+    </div>
 
-    </main>
-
-
-  </div>
-
-
-</body>
+  </body>
 
 </html>
